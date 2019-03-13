@@ -1,2 +1,2 @@
 # workshop
-kubernetes workshop
+MetaKube / kubernetes Workshop
