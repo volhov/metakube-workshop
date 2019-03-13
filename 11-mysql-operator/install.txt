@@ -1,0 +1,10 @@
+kubectl create ns mysql-operator
+
+helm install --name mysql-operator mysql-operator
+
+kubectl create secret generic mysql-root-user-password --from-literal=password=QlaglEGGjMQyi5QIDgqcxOJ5I
+
+kubectl create -f multi-master.yml
+
+https://github.com/oracle/mysql-operator
+https://github.com/presslabs/mysql-operator

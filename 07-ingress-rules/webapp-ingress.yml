@@ -1,0 +1,21 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: simon.proeins.metakube.de 
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: 'true'
+spec:
+  tls:
+  - hosts:
+    - simon.proeins.metakube.de
+    secretName: simon-tls
+  rules:
+  - host: simon.proeins.metakube.de
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: webapp-svc
+          servicePort: http

@@ -1,0 +1,1 @@
+helm install --namespace nginx-ingress --name nginx-ingress --set controller.replicaCount=3 stable/nginx-ingress
