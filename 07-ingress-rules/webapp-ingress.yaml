@@ -7,7 +7,6 @@ spec:
   tls:
   - hosts:
     - webapp-<YOUR_NAME>.unipig.de 
-    secretName: webapp-tls
   rules:
   - host: webapp-<YOUR_NAME>.unipig.de 
     http:
