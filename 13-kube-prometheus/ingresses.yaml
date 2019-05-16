@@ -1,0 +1,53 @@
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  name: prometheus
+  namespace: monitoring
+spec:
+  tls:
+    - hosts:
+        - prometheus-<YOURNAME>.unipig.de
+  rules:
+    - host: prometheus-<YOURNAME>.unipig.de
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: prometheus-k8s
+              servicePort: 9090
+---
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  name: grafana
+  namespace: monitoring
+spec:
+  tls:
+    - hosts:
+        - grafana-<YOURNAME>.unipig.de
+  rules:
+    - host: grafana-<YOURNAME>.unipig.de
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: grafana
+              servicePort: 3000
+---
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  name: alertmanager
+  namespace: monitoring
+spec:
+  tls:
+    - hosts:
+        - alertmanager-<YOURNAME>.unipig.de
+  rules:
+    - host: alertmanager-<YOURNAME>.unipig.de
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: alertmanager-main
+              servicePort: 9093

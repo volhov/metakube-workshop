@@ -1,0 +1,18 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: webapp-<YOUR_NAME>.unipig.de
+spec:
+  tls:
+  - hosts:
+    - webapp-<YOUR_NAME>.unipig.de 
+    secretName: webapp-tls
+  rules:
+  - host: webapp-<YOUR_NAME>.unipig.de 
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: webapp-svc
+          servicePort: http

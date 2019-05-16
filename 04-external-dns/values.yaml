@@ -1,0 +1,59 @@
+## Details about the image to be pulled.
+image:
+  name: registry.opensource.zalan.do/teapot/external-dns
+  tag: v0.5.13
+  pullSecrets: []
+  pullPolicy: IfNotPresent
+
+## This controls which types of resource external-dns should 'watch' for new
+## DNS entries.
+sources:
+  - service
+  - ingress
+
+## The DNS provider where the DNS records will be created (options: aws, google, inmemory, azure, rfc2136 )
+provider: aws
+
+# AWS Access keys to inject as environment variables
+aws:
+  secretKey: "XXXXXX"
+  accessKey: "XXXXX"
+  credentialsPath: "/.aws"
+  roleArn: ""
+  region: "eu-central-1"
+  # Filter for zones of this type (optional, options: public, private)
+  zoneType: "public"
+
+## Limit possible target zones by domain suffixes (optional)
+domainFilters: []
+## Limit possible target zones by zone id (optional)
+zoneIdFilters: []
+# Filter sources managed by external-dns via annotation using label selector semantics (default: all sources)
+annotationFilter: ""
+## Adjust the interval for DNS updates
+interval: "1m"
+
+# Registry to use for ownership (txt or noop)
+registry: "txt"
+
+# When using the TXT registry, a name that identifies this instance of ExternalDNS
+txtOwnerId: "XXXXX"
+
+## Modify how DNS records are sychronized between sources and providers (options: sync, upsert-only )
+policy: upsert-only
+
+# Verbosity of the logs (options: panic, debug, info, warn, error, fatal)
+logLevel: info
+
+## CPU and Memory limit and request for external-dns
+resources: 
+  limits:
+    memory: 50Mi
+  requests:
+    memory: 50Mi
+    cpu: 10m
+
+rbac:
+  ##
+  create: true
+  apiVersion: v1beta1
