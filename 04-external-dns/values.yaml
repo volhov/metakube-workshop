@@ -1,4 +1,4 @@
-## Details about the image to be pulled.
+## External DNS 
 image:
   name: registry.opensource.zalan.do/teapot/external-dns
   tag: v0.5.13
@@ -16,8 +16,9 @@ provider: aws
 
 # AWS Access keys to inject as environment variables
 aws:
-  secretKey: "XXXXXX"
-  accessKey: "XXXXX"
+  secretKey: ""
+  accessKey: ""
+  # pre external-dns 0.5.9 home dir should be `/root/.aws`
   credentialsPath: "/.aws"
   roleArn: ""
   region: "eu-central-1"
@@ -37,7 +38,7 @@ interval: "1m"
 registry: "txt"
 
 # When using the TXT registry, a name that identifies this instance of ExternalDNS
-txtOwnerId: "XXXXX"
+txtOwnerId: "changeme"
 
 ## Modify how DNS records are sychronized between sources and providers (options: sync, upsert-only )
 policy: upsert-only
@@ -54,6 +55,6 @@ resources:
     cpu: 10m
 
 rbac:
-  ##
   create: true
+  # Beginning with Kubernetes 1.8, the api is stable and v1 can be used.
   apiVersion: v1beta1

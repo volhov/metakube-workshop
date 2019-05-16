@@ -6,7 +6,7 @@ metadata:
   labels:
     app: mysql-env
 spec:
-  storageClassName: sys11-quobyte
+  storageClassName: 
   accessModes:
   - ReadWriteOnce
   resources:

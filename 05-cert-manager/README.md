@@ -41,8 +41,8 @@ helm upgrade --install --namespace cert-manager -f route53/cert-manager.yaml cer
 
 * Create ClusterIssuer
 ```
-kubectl apply -f router53/credentials-secret.yaml 
-kubectl apply -f router53/clusterissuer.yaml
+kubectl apply -f route53/credentials-secret.yaml 
+kubectl apply -f route53/clusterissuer.yaml
 ```
 * Change hostnames in `certificate.yaml`
 * Create wildcard certificate
